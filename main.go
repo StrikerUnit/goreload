@@ -108,7 +108,8 @@ func mainAction(c *cli.Context) error {
 		buildPath = c.String("path")
 	}
 	builder := internal.NewBuilder(buildPath, c.String("bin"), wd, buildArgs)
-	runner := internal.NewRunner(filepath.Join(wd, builder.Binary()), c.Args().Slice()...)
+	runArgs, err := shellwords.Parse(c.String("runArgs"))
+	runner := internal.NewRunner(filepath.Join(wd, builder.Binary()), c.Args().Slice(), runArgs...)
 	runner.SetWriter(os.Stdout)
 
 	shutdown(runner)

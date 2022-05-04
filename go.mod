@@ -1,4 +1,4 @@
-module github.com/acoshift/goreload
+module github.com/StrikerUnit/goreload
 
 go 1.14
 
