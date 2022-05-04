@@ -19,7 +19,7 @@ import (
 	"github.com/mattn/go-shellwords"
 	"github.com/urfave/cli/v2"
 
-	"github.com/acoshift/goreload/internal"
+	"github.com/StrikerUnit/goreload/internal"
 )
 
 var (
