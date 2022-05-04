@@ -9,7 +9,7 @@ detects a change.
 ## Installation
 
 ```shell
-go install github.com/acoshift/goreload@master
+go install github.com/StrikerUnit/goreload@master
 ```
 
 ### macOS
