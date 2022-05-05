@@ -69,6 +69,10 @@ func main() {
 			Usage: "Additional go build arguments",
 		},
 		&cli.StringFlag{
+			Name:  "runArgs",
+			Usage: "Additional go run arguments",
+		},
+		&cli.StringFlag{
 			Name:  "logPrefix",
 			Usage: "Log prefix",
 			Value: "goreload",
@@ -89,6 +93,7 @@ func main() {
 }
 
 func mainAction(c *cli.Context) error {
+	// fmt.Printf("%+v\n", c)
 	logger.SetPrefix(fmt.Sprintf("[%s] ", c.String("logPrefix")))
 
 	all := c.Bool("all")
@@ -109,14 +114,13 @@ func mainAction(c *cli.Context) error {
 	}
 	builder := internal.NewBuilder(buildPath, c.String("bin"), wd, buildArgs)
 	runArgs, err := shellwords.Parse(c.String("runArgs"))
-	fmt.Printf("%s\n", buildArgs)
-	fmt.Printf("%s\n", runArgs)
 	if err != nil {
 		panic(err)
 	}
 	runner := internal.NewRunner(filepath.Join(wd, builder.Binary()), runArgs...)
 	runner.SetWriter(os.Stdout)
 
+	// time.Sleep(1000 * time.Second)
 	shutdown(runner)
 
 	ctx, cancel := context.WithCancel(context.Background())
