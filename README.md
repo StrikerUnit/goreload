@@ -35,6 +35,7 @@ Options
    --excludeDir value, -x value  Relative directories to exclude
    --all                         reloads whenever any file changes, as opposed to reloading only on .go file change
    --buildArgs value             Additional go build arguments
+   --runArgs value               Arguments passed when run program
    --logPrefix value             Setup custom log prefix
    --help, -h                    show help
    --version, -v                 print the version
