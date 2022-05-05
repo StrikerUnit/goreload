@@ -109,6 +109,7 @@ func mainAction(c *cli.Context) error {
 	}
 	builder := internal.NewBuilder(buildPath, c.String("bin"), wd, buildArgs)
 	runArgs, err := shellwords.Parse(c.String("runArgs"))
+	fmt.Printf("%s\n", runArgs)
 	if err != nil {
 		panic(err)
 	}
